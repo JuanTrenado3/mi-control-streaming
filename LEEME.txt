@@ -1,0 +1,43 @@
+MI CONTROL DE STREAMING
+
+Aplicación web instalable para administrar cuentas, perfiles de clientes, cobros y gastos.
+
+SECCIONES
+- Inicio: resumen de cobros, pendientes, gastos y servicios.
+- Cuentas: registra cada correo y contraseña, un identificador como “Netflix cuenta 1”, y el límite de perfiles de esa cuenta.
+- Perfiles: registra a cada persona y vincúlala a una o varias cuentas. Cada vínculo puede tener su propio cobro mensual y fecha.
+- Cobros: aparecen los cargos mensuales de cada vínculo en los días 11, 15 o 30. Puedes marcar cada cargo como pagado o pendiente.
+- Dinero: muestra los costos individuales agrupados por servicio, las promociones y el gasto total.
+
+PERFILES Y COBROS
+- Spotify usa el día 11 por defecto; los demás servicios, el día 15. Puedes cambiar cada vínculo a los días 11, 15 o 30.
+- Se genera un cargo por cada vínculo en cada mes, desde el mes en que se registra.
+- Un cargo pendiente permanece en la lista aunque venza el mes. Al marcarlo pagado, se conserva en el historial.
+- Una persona vinculada a dos cuentas tendrá un cobro separado para cada cuenta.
+- Al eliminar una persona o quitarle una cuenta, los cargos ya generados se conservan; dejan de generarse cargos futuros para ese vínculo.
+
+GASTOS Y PROMOCIONES
+- El costo individual se registra al crear o editar una cuenta.
+- Para registrar un paquete como MEGA, agrega una promoción, pon el costo total y selecciona los servicios y cuentas que incluye.
+- El precio del paquete se cuenta una sola vez en el gasto general. La app muestra aparte el costo individual por servicio, sin repartir artificialmente el precio del paquete entre sus plataformas.
+- Si una cuenta ya tenía un costo individual y la agregas a una promoción, ese costo individual se excluye del total mientras la cuenta esté dentro del paquete; si la quitas del paquete, vuelve a contarse.
+
+DATOS ANTERIORES
+- Al abrir datos creados en la versión anterior, las personas de cada cuenta se migran a Perfiles con una sola cuenta vinculada y los costos de cada cuenta pasan a Gastos individuales.
+- Si una misma persona aparece en varias cuentas, edita su perfil para vincular las cuentas adicionales y después elimina el perfil duplicado si ya no lo necesitas.
+- Los perfiles existentes empiezan a generar cargos desde el mes de actualización; la app no crea deuda de meses anteriores a esta función.
+- Si cambias la dirección pública de la aplicación, descarga un respaldo desde la versión anterior y restáuralo en la nueva; cada dirección web tiene su propio almacenamiento local.
+
+SEGURIDAD Y RESPALDO
+- Los datos se cifran en el almacenamiento local del navegador usando la clave maestra.
+- La clave maestra no se puede recuperar. Conserva una copia del respaldo cifrado.
+- Cada navegador/dispositivo mantiene su propia copia. Usa “Descargar respaldo” y “Restaurar respaldo” para trasladar datos.
+- La aplicación no sincroniza datos entre dispositivos ni manda recordatorios automáticos.
+- Para pasar los datos de Edge al teléfono: en Edge, abre Totales (versión anterior) o Dinero (versión actual) > Descargar respaldo y guarda el archivo JSON cifrado. Después abre la app en el teléfono, ve a Dinero > Restaurar respaldo, selecciona ese archivo e ingresa la misma clave maestra. No hace falta enviar el archivo ni la clave a otra persona.
+
+PRIMER USO Y ALOJAMIENTO
+1. Publica esta carpeta en un servidor HTTPS o ábrela desde un servidor local.
+2. Abre la dirección en el teléfono y crea una clave maestra de al menos 8 caracteres.
+3. En iPhone, en Safari, usa Compartir > Añadir a pantalla de inicio. En Android, en Chrome, abre el menú y elige Instalar aplicación o Añadir a pantalla de inicio.
+
+Para publicar manualmente en Vercel, extrae el ZIP, abre https://vercel.com/drop, inicia sesión y arrastra la carpeta “gestor-streaming”. Elige un nombre para el proyecto y pulsa Deploy. El servidor aloja los archivos de la aplicación; los datos de cuentas permanecen cifrados en el navegador.
